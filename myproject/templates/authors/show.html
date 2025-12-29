@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Voici l'auteur</title>
+</head>
+<body>
+  <h1>{{ author.name }}</h1>
+  <p>Date de naissance : {{ author.birth_date }}</p>
+  <p>Nationalité : {{ author.nationality }}</p>
+  <a href="{% url 'index_author' %}">Retour à la liste des auteurs</a>
+</body>
+</html>

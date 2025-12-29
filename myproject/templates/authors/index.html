@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vue des auteurs</title>
+</head>
+<body>
+  <h1>Liste des auteurs</h1>
+
+  {% for author in authors %}
+    <article>
+      <h2>{{ author.name }}</h2>
+      <p>{{ author.birth_date }}</p>
+      <p>{{ author.nationality }}</p>
+      <a href="{% url 'show_author' author.id %}">Voir l'auteur</a>
+    </article>
+  {% empty %}
+    <p>Aucun auteur trouvé.</p>
+  {% endfor %}
+</body>
+</html>

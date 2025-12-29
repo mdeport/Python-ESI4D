@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vue des livres</title>
+</head>
+<body>
+  <a href="{% url 'new_book' %}">Ajouter un nouveau livre</a>
+  <h1>Liste des livres</h1>
+
+  {% for book in books %}
+    <article>
+      <h2>{{ book.title }}</h2>
+      <p>Auteur : {{ book.author }}</p>
+      <p>ISBN :{{ book.isbn }}</p>
+      <p>Prix :{{ book.price }}</p>
+      <p>Date de publication :{{ book.published_date }}</p>
+      <a href="{% url 'show_book' book.id %}">Voir le livre</a>
+    </article>
+  {% empty %}
+    <p>Aucun livre trouvé.</p>
+  {% endfor %}
+</body>
+</html>
