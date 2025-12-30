@@ -6,6 +6,7 @@
 </head>
 <body>
   <a href="{% url 'new_loan' %}">Ajouter un nouvelle emprunt</a>
+  <a href="{% url 'new_return_loan' %}">Ajouter un nouveau retour</a>
   <h1>Liste des emprunts</h1>
 
   {% for loan in loans %}
