@@ -9,12 +9,8 @@
     <h1>Ajouter une nouvelle catégorie</h1>
     <form method="post">
         {% csrf_token %}
-        <label for="name">Name :</label>
-        <input type="text" id="name" name="name" required><br>
-
-        <label for="description">Description :</label>
-        <input type="text" id="description" name="description" required><br>
-
+        {{ form.non_field_errors }}
+        {{ form.as_p }}
         <button type="submit">Créer</button>
     </form>
     <a href="{% url 'index_category' %}">Retour à la liste des catégories</a>
