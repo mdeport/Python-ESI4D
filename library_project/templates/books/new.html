@@ -9,26 +9,10 @@
     <h1>Ajouter un nouveau livre</h1>
     <form method="post">
         {% csrf_token %}
-        <label for="title">Titre :</label>
-        <input type="text" id="title" name="title" required><br>
-
-        <label for="author">Auteur :</label>
-        <select id="author" name="author" required>
-            <option value="">— Choisir —</option>
-            {% for author in authors %}
-                <option value="{{ author.id }}">{{ author }}</option>
-            {% endfor %}
-        </select><br>
-
-        <label for="isbn">ISBN :</label>
-        <input type="text" id="isbn" name="isbn" required><br>
-
-        <label for="published_date">Date de publication :</label>
-        <input type="date" id="published_date" name="published_date" required><br>
-
-        <label for="price">Prix :</label>
-        <input type="number" id="price" name="price" step="0.01" required><br>
-        
+        {{ form.non_field_errors }}
+        <table>
+            {{ form.as_table }}
+        </table>
         <button type="submit">Créer</button>
     </form>
     <a href="{% url 'index_book' %}">Retour à la liste des livres</a>
