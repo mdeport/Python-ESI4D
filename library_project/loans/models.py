@@ -14,11 +14,6 @@ class Loan(models.Model):
     state_book_returned = models.CharField(max_length=100, blank=True)
     comments = models.TextField(blank=True)
 
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=["book"], condition=Q(date_returned__isnull=True), name="unique_active_loan_per_book"),
-        ]
-
     def is_active(self):
         return self.date_returned is None
 

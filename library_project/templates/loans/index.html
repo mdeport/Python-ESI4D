@@ -7,6 +7,7 @@
 <body>
   <h1>Liste des prêts</h1>
   <a href="{% url 'new_loan' %}">Créer un prêt</a>
+  <a href="{% url 'return_loan' %}">Enregistrer un retour</a>
   <ul>
     {% for loan in loans %}
       <li>{{ loan.book.title }} — emprunteur: {{ loan.name_borrower }} — prêt le: {{ loan.date_loan }} — statut: {{ loan.state_book_returned }}</li>

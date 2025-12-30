@@ -1,28 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un nouveau retour</title>
+  <meta charset="utf-8">
+  <title>Retour d'emprunt</title>
 </head>
 <body>
-    <h1>Ajouter un nouveau retour</h1>
-    <form method="post">
-        {% csrf_token %}
-        
-        <label for="loan">Emprunt :</label>
-        <select id="loan" name="loan" required>
-            <option value="">— Choisir —</option>
-            {% for loan in loans %}
-                <option value="{{ loan.id }}">{{ loan }}</option>
-            {% endfor %}
-        </select><br>
+  <h1>Enregistrer un retour</h1>
 
-        <label for="date_returned">Date de retour :</label>
-        <input type="date" id="date_returned" name="date_returned" required><br>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
 
-        <button type="submit">Créer</button>
-    </form>
-    <a href="{% url 'index_loan' %}">Retour à la liste des emprunts</a>
+    <p>
+      {{ form.loan.label_tag }}<br>
+      {{ form.loan }}<br>
+      {{ form.loan.errors }}
+    </p>
+
+    <p>
+      {{ form.date_returned.label_tag }}<br>
+      {{ form.date_returned }}<br>
+      {{ form.date_returned.errors }}
+    </p>
+
+    <p>
+      {{ form.comments.label_tag }}<br>
+      {{ form.comments }}<br>
+      {{ form.comments.errors }}
+    </p>
+
+    <button type="submit">Enregistrer le retour</button>
+  </form>
+
+  <a href="{% url 'loans_index' %}">Retour à la liste des prêts</a>
 </body>
 </html>

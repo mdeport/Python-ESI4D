@@ -18,3 +18,9 @@ class LoanNewForm(forms.ModelForm):
     def clean(self):
         cleaned = super().clean()
         book = cleaned.get("book")
+
+        if book:
+            if getattr(book, "number_of_books_available", 0) <= 0:
+                raise forms.ValidationError({"book": "Aucun exemplaire disponible pour ce livre."})
+            
+        return cleaned
