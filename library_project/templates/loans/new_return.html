@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <title>Retour d'emprunt</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Enregistrer un retour{% endblock %}
+{% block content %}
   <h1>Enregistrer un retour</h1>
 
   <form method="post">
@@ -33,5 +29,4 @@
   </form>
 
   <a href="{% url 'loans_index' %}">Retour à la liste des prêts</a>
-</body>
-</html>
+{% endblock %}

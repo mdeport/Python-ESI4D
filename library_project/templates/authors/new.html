@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un nouvel auteur</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Ajouter un nouvel auteur{% endblock %}
+{% block content %}
     <h1>Ajouter un nouvel auteur</h1>
     <form method="post">
         {% csrf_token %}
@@ -14,5 +9,4 @@
         <button type="submit">Créer</button>
     </form>
     <a href="{% url 'index_author' %}">Retour à la liste des auteurs</a>
-</body>
-</html>
+{% endblock %}

@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <title>Prêts</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Liste des prêts{% endblock %}
+{% block content %}
   <h1>Liste des prêts</h1>
   <a href="{% url 'new_loan' %}">Créer un prêt</a>
   <a href="{% url 'return_loan' %}">Enregistrer un retour</a>
@@ -15,5 +11,4 @@
       <li>Aucun prêt.</li>
     {% endfor %}
   </ul>
-</body>
-</html>
+{% endblock %}

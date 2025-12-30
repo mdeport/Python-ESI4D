@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter une nouvelle catégorie</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Ajouter une nouvelle catégorie{% endblock %}
+{% block content %}
     <h1>Ajouter une nouvelle catégorie</h1>
     <form method="post">
         {% csrf_token %}
@@ -14,5 +9,4 @@
         <button type="submit">Créer</button>
     </form>
     <a href="{% url 'index_category' %}">Retour à la liste des catégories</a>
-</body>
-</html>
+{% endblock %}

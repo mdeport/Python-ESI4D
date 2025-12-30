@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un nouveau livre</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Ajouter un nouveau livre{% endblock %}
+{% block content %}
     <h1>Ajouter un nouveau livre</h1>
     <form method="post">
         {% csrf_token %}
@@ -16,5 +11,4 @@
         <button type="submit">Créer</button>
     </form>
     <a href="{% url 'index_book' %}">Retour à la liste des livres</a>
-</body>
-</html>
+{% endblock %}

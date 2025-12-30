@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Vue des categories</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Liste des catégories{% endblock %}
+{% block content %}
   <a href="{% url 'new_category' %}">Ajouter une nouvelle catégorie</a>
   <h1>Liste des catégories</h1>
 
@@ -17,5 +13,4 @@
   {% empty %}
     <p>Aucune catégorie trouvée.</p>
   {% endfor %}
-</body>
-</html>
+{% endblock %}

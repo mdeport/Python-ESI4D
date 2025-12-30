@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Vue des livres</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Liste des livres{% endblock %}
+{% block content %}
   <a href="{% url 'new_book' %}">Ajouter un nouveau livre</a>
   <h1>Liste des livres</h1>
 
@@ -22,5 +18,4 @@
   {% empty %}
     <p>Aucun livre trouvé.</p>
   {% endfor %}
-</body>
-</html>
+{% endblock %}

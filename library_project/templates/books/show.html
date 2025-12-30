@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <title>Voici le livre</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Détails du livre{% endblock %}
+{% block content %}
   <h1>{{ book.title }}</h1>
   <p>Auteur : {{ book.author }}</p>
   <p>ISBN : {{ book.isbn }}</p>
@@ -13,5 +9,4 @@
   <p>Nombre d'exemplaires disponibles : {{ book.number_of_books_available }}</p>
   <p>Nombre d'exemplaires en possession : {{ book.number_of_book_possessed }}</p><br>
   <a href="{% url 'index_book' %}">Retour à la liste des livres</a> 
-</body>
-</html>
+{% endblock %}

@@ -44,7 +44,7 @@ def new_loan(request):
                         book.number_of_books_available -= 1
                         book.save()
                         loan.save()
-                        return redirect("loans_index")
+                        return redirect("index_loans")
     else:
         form = LoanNewForm()
 
@@ -79,7 +79,7 @@ def return_loan(request):
                         book.number_of_books_available = new_available
                     book.save()
 
-                    return redirect("loans_index")
+                    return redirect("index_loans")
     else:
         form = LoanReturnForm()
 
