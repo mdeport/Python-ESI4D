@@ -10,6 +10,8 @@
   <p>ISBN : {{ book.isbn }}</p>
   <p>Prix : {{ book.price }}</p>
   <p>Date de publication : {{ book.published_date }}</p><br>
+  <p>Nombre d'exemplaires disponibles : {{ book.number_of_books_available }}</p>
+  <p>Nombre d'exemplaires en possession : {{ book.number_of_book_possessed }}</p><br>
   <a href="{% url 'index_book' %}">Retour à la liste des livres</a> 
 </body>
 </html>

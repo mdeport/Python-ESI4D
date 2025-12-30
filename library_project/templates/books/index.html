@@ -15,6 +15,8 @@
       <p>ISBN :{{ book.isbn }}</p>
       <p>Prix :{{ book.price }}</p>
       <p>Date de publication :{{ book.published_date }}</p>
+      <p>Nombre d'exemplaires disponibles :{{ book.number_of_books_available }}</p>
+      <p>Nombre d'exemplaires en possession :{{ book.number_of_book_possessed }}</p>
       <a href="{% url 'show_book' book.id %}">Voir le livre</a>
     </article>
   {% empty %}

@@ -3,7 +3,7 @@ from books.models import Book
 from django.db.models import Q
 
 # Create your models here.
-class loan(models.Model):
+class Loan(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name="loans")
     name_borrower = models.CharField(max_length=100)
     mail_borrower = models.EmailField()

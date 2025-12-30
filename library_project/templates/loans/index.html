@@ -1,24 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <meta charset="utf-8">
-    <title>Vue des emprunts</title>
+  <meta charset="utf-8">
+  <title>Prêts</title>
 </head>
 <body>
-  <a href="{% url 'new_loan' %}">Ajouter un nouvelle emprunt</a>
-  <a href="{% url 'new_return_loan' %}">Ajouter un nouveau retour</a>
-  <h1>Liste des emprunts</h1>
-
-  {% for loan in loans %}
-    <article>
-      <h2>{{ loan.book.title }}</h2>
-      <p>Emprunteur : {{ loan.borrower }}</p>
-      <p>Date d'emprunt :{{ loan.loan_date }}</p>
-      <p>Date de retour :{{ loan.return_date }}</p>
-      <a href="{% url 'show_book' loan.book.id %}">Voir le livre</a>
-    </article>
-  {% empty %}
-    <p>Aucun emprunt trouvé.</p>
-  {% endfor %}
+  <h1>Liste des prêts</h1>
+  <a href="{% url 'new_loan' %}">Créer un prêt</a>
+  <ul>
+    {% for loan in loans %}
+      <li>{{ loan.book.title }} — emprunteur: {{ loan.name_borrower }} — prêt le: {{ loan.date_loan }} — statut: {{ loan.state_book_returned }}</li>
+    {% empty %}
+      <li>Aucun prêt.</li>
+    {% endfor %}
+  </ul>
 </body>
 </html>
