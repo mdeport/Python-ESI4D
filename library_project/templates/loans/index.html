@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vue des emprunts</title>
+</head>
+<body>
+  <a href="{% url 'new_loan' %}">Ajouter un nouvelle emprunt</a>
+  <h1>Liste des emprunts</h1>
+
+  {% for loan in loans %}
+    <article>
+      <h2>{{ loan.book.title }}</h2>
+      <p>Emprunteur : {{ loan.borrower }}</p>
+      <p>Date d'emprunt :{{ loan.loan_date }}</p>
+      <p>Date de retour :{{ loan.return_date }}</p>
+      <a href="{% url 'show_book' loan.book.id %}">Voir le livre</a>
+    </article>
+  {% empty %}
+    <p>Aucun emprunt trouvé.</p>
+  {% endfor %}
+</body>
+</html>

@@ -21,3 +21,9 @@ python3 manage.py makemigrations
 ```bash
 python3 manage.py migrate 
 ```
+
+## lancer le server de développement :
+
+```bash
+python3 manage.py runserver
+```

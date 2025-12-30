@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vue des categories</title>
+</head>
+<body>
+  <a href="{% url 'new_category' %}">Ajouter une nouvelle catégorie</a>
+  <h1>Liste des catégories</h1>
+
+  {% for category in categories %}
+    <article>
+      <h2>{{ category.name }}</h2>
+      <p>Description : {{ category.description }}</p>
+      <a href="{% url 'show_category' category.id %}">Voir la catégorie</a>
+    </article>
+  {% empty %}
+    <p>Aucune catégorie trouvée.</p>
+  {% endfor %}
+</body>
+</html>

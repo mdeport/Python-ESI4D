@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Voici la catégorie</title>
+</head>
+<body>
+  <h1>{{ category.name }}</h1>
+  <p>Description : {{ category.description }}</p>
+  <a href="{% url 'index_category' %}">Retour à la liste des catégories</a> 
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un nouveau prêt</title>
+</head>
+<body>
+    <h1>Ajouter un nouveau prêt</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="book">Livre :</label>
+        <select id="book" name="book" required>
+            <option value="">— Choisir —</option>
+            {% for book in books %}
+                <option value="{{ book.id }}">{{ book.title }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="name_borrower">Emprunteur :</label>
+        <input type="text" id="name_borrower" name="name_borrower" required><br>
+
+        <label for="email_borrower">Email de l'emprunteur :</label>
+        <input type="email" id="email_borrower" name="email_borrower" required><br>
+
+        <label for="number_of_card_librairies">Numéro de carte de bibliothèque :</label>
+        <input type="text" id="number_of_card_librairies" name="number_of_card_librairies" required><br>
+
+        <label for="date_loan">Date d'emprunt :</label>
+        <input type="date" id="date_loan" name="date_loan" required><br>
+
+        <label for="comments">Commentaires :</label>
+        <textarea id="comments" name="comments"></textarea><br>
+
+        <button type="submit">Créer</button>
+    </form>
+    <a href="{% url 'index_book' %}">Retour à la liste des livres</a>
+</body>
+</html>
