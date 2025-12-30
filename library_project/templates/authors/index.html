@@ -2,16 +2,29 @@
 
 {% block title %}Liste des auteurs{% endblock %}
 {% block content %}
-  <h1>Liste des auteurs</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1 class="h3 mb-0">Liste des auteurs</h1>
+  <a href="{% url 'new_author' %}" class="btn btn-success">Ajouter un auteur</a>
+</div>
 
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
   {% for author in authors %}
-    <article>
-      <h2>{{ author.first_name }} {{ author.last_name }}</h2>
-      <p>{{ author.birth_date }}</p>
-      <p>{{ author.nationality }}</p>
-      <a href="{% url 'show_author' author.id %}">Voir l'auteur</a>
-    </article>
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{ author.first_name }} {{ author.last_name }}</h5>
+          <p class="card-text mb-1"><strong>Naissance :</strong> {{ author.birth_date|date:"d/m/Y" }}</p>
+          <p class="card-text mb-2"><strong>Nationalité :</strong> {{ author.nationality }}</p>
+          <p class="card-text mb-3"><strong>Biography :</strong> {{ author.biography }}</p>
+          <p class="card-text mb-3"><strong>...</strong></p>
+          <a href="{% url 'show_author' author.id %}" class="btn btn-primary btn-sm">Voir</a>
+        </div>
+      </div>
+    </div>
   {% empty %}
-    <p>Aucun auteur trouvé.</p>
+    <div class="col-12">
+      <div class="alert alert-info">Aucun auteur trouvé.</div>
+    </div>
   {% endfor %}
+</div>
 {% endblock %}

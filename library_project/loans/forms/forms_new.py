@@ -12,7 +12,11 @@ class LoanNewForm(forms.ModelForm):
             "comments",
         ]
         widgets = {
-            "comments": forms.Textarea(attrs={"rows": 3}),
+            "comments": forms.Textarea(attrs={"rows": 3,"class": "form-control"}),
+            "book": forms.Select(attrs={"class": "form-control"}),
+            "name_borrower": forms.TextInput(attrs={"class": "form-control"}),
+            "mail_borrower": forms.EmailInput(attrs={"class": "form-control"}), 
+            "number_of_card_librairies": forms.TextInput(attrs={"class": "form-control"}),
         }
 
     def clean(self):

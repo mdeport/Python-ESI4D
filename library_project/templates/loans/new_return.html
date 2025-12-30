@@ -25,8 +25,8 @@
       {{ form.comments.errors }}
     </p>
 
-    <button type="submit">Enregistrer le retour</button>
+    <button type="submit" class="btn btn-primary">Enregistrer le retour</button>
   </form>
 
-  <a href="{% url 'loans_index' %}">Retour à la liste des prêts</a>
+  <a class="btn btn-secondary" href="{% url 'index_loans' %}">Retour à la liste des prêts</a>
 {% endblock %}

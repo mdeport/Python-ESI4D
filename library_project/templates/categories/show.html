@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block title %}Détails de la catégorie{% endblock %}
 {% block content %}
-  <h1>{{ category.name }}</h1>
-  <p>Description : {{ category.description }}</p>
-  <a href="{% url 'index_category' %}">Retour à la liste des catégories</a> 
+    <h1>Détails de la catégorie</h1>
+    <p><strong>Nom :</strong> {{ category.name }}</p>
+    <p><strong>Description :</strong> {{ category.description }}</p>
+    <a class="btn btn-secondary" href="{% url 'index_category' %}">Retour à la liste des catégories</a>
 {% endblock %}

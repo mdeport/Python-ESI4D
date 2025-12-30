@@ -1,12 +1,54 @@
 {% extends "base.html" %}
 {% block title %}Détails du livre{% endblock %}
 {% block content %}
-  <h1>{{ book.title }}</h1>
-  <p>Auteur : {{ book.author }}</p>
-  <p>ISBN : {{ book.isbn }}</p>
-  <p>Prix : {{ book.price }}</p>
-  <p>Date de publication : {{ book.published_date }}</p><br>
-  <p>Nombre d'exemplaires disponibles : {{ book.number_of_books_available }}</p>
-  <p>Nombre d'exemplaires en possession : {{ book.number_of_book_possessed }}</p><br>
-  <a href="{% url 'index_book' %}">Retour à la liste des livres</a> 
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h1 class="card-title h4 mb-3">{{ book.title }}</h1>
+
+        <ul class="list-unstyled mb-3">
+          <li><strong>Auteur :</strong>
+            {% if book.author %}
+              <a href="{% url 'show_author' book.author.id %}">{{ book.author.first_name }} {{ book.author.last_name }}</a>
+            {% else %}
+              —
+            {% endif %}
+          </li>
+          <li><strong>Catégorie :</strong> {{ book.category.name|default:"—" }}</li>
+          <li><strong>ISBN :</strong> {{ book.isbn }}</li>
+          <li><strong>Publié le :</strong> {{ book.published_date|date:"d/m/Y" }}</li>
+          <li><strong>Éditeur :</strong> {{ book.house_of_edition|default:"—" }}</li>
+          <li><strong>Langue :</strong> {{ book.langage|default:"—" }}</li>
+          <li><strong>Pages :</strong> {{ book.number_of_pages|default:"—" }}</li>
+          <li><strong>Prix :</strong> {{ book.price }} €</li>
+          <li><strong>Ajouté le :</strong> {{ book.date_added }}</li>
+        </ul>
+
+        <div class="mb-3">
+          <h6 class="mb-2">Disponibilité</h6>
+          {% if book.number_of_books_available > 0 %}
+            <span class="badge bg-success">{{ book.number_of_books_available }}</span>
+          {% else %}
+            <span class="badge bg-secondary">0</span>
+          {% endif %}
+          <small class="text-muted ms-2">/ {{ book.number_of_book_possessed }}</small>
+        </div>
+
+        <div class="mb-3">
+          <h6 class="mb-2">Description</h6>
+          {% if book.description %}
+            <p class="card-text">{{ book.description|linebreaks }}</p>
+          {% else %}
+            <p class="text-muted">Aucune description.</p>
+          {% endif %}
+        </div>
+
+        <div class="d-flex gap-2">
+          <a href="{% url 'index_book' %}" class="btn btn-secondary">Retour à la liste</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

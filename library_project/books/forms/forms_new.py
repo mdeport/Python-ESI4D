@@ -20,10 +20,21 @@ class BookForm(forms.ModelForm):
         ]
         widgets = {
             "published_date": forms.DateInput(attrs={"type": "date"}),
-            "description": forms.Textarea(attrs={"rows": 4}),
+            "description": forms.Textarea(attrs={"rows": 4, "class": "form-control"}),
+            "title": forms.TextInput(attrs={"class": "form-control"}),
+            "isbn": forms.TextInput(attrs={"class": "form-control"}),
+            "price": forms.NumberInput(attrs={"class": "form-control", "step": "0.01"}),
+            "author": forms.Select(attrs={"class": "form-control"}),
+            "number_of_book_possessed": forms.NumberInput(attrs={"class": "form-control"}),
+            "number_of_books_available": forms.NumberInput(attrs={"class": "form-control"}),
+            "category": forms.Select(attrs={"class": "form-control"}),
+            "langage": forms.TextInput(attrs={"class": "form-control"}),
+            "number_of_pages": forms.NumberInput(attrs={"class": "form-control"}),
+            "house_of_edition": forms.TextInput(attrs={"class": "form-control"}),
         }
 
     def clean(self):
+        breakpoint()
         cleaned = super().clean()
         avail = cleaned.get("number_of_books_available")
         poss = cleaned.get("number_of_book_possessed")

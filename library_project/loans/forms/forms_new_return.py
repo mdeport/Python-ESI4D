@@ -23,6 +23,10 @@ class LoanReturnForm(forms.ModelForm):
     class Meta:
         model = Loan
         fields = ["date_returned", "comments"]
+        widgets = {
+            "date_returned": forms.DateTimeInput(attrs={"type": "datetime-local", "class": "form-control"}),
+            "comments": forms.Textarea(attrs={"rows": 4, "class": "form-control"}),
+        }
 
     def clean_loan(self):
         loan = self.cleaned_data["loan"]

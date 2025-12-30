@@ -1,16 +1,30 @@
 {% extends "base.html" %}
 {% block title %}Liste des catégories{% endblock %}
 {% block content %}
-  <a href="{% url 'new_category' %}">Ajouter une nouvelle catégorie</a>
-  <h1>Liste des catégories</h1>
-
-  {% for category in categories %}
-    <article>
-      <h2>{{ category.name }}</h2>
-      <p>Description : {{ category.description }}</p>
-      <a href="{% url 'show_category' category.id %}">Voir la catégorie</a>
-    </article>
-  {% empty %}
-    <p>Aucune catégorie trouvée.</p>
-  {% endfor %}
+    <h1>Liste des catégories</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.description }}</td>
+                    <td>
+                        <a class="btn btn-info btn-sm" href="{% url 'show_category' category.id %}">Voir</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">Aucune catégorie disponible.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="{% url 'new_category' %}">Ajouter une nouvelle catégorie</a>
 {% endblock %}

@@ -15,6 +15,10 @@ def index_loans(request):
     loans = Loan.objects.select_related("book").all()
     return render(request, "loans/index.html", {"loans": loans})
 
+def show_loan(request, loan_id):
+    loan = Loan.objects.select_related("book").get(pk=loan_id)
+    return render(request, "loans/show.html", {"loan": loan})
+
 def new_loan(request):
     if request.method == "POST":
         form = LoanNewForm(request.POST)

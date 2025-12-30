@@ -6,7 +6,8 @@ class CategoryForm(forms.ModelForm):
         model = Category
         fields = ["name", "description"]
         widgets = {
-            "description": forms.Textarea(attrs={"rows": 4}),
+            "description": forms.Textarea(attrs={"rows": 4, "class": "form-control"}),
+            "name": forms.TextInput(attrs={"class": "form-control"}),
         }
 
     def clean_name(self):

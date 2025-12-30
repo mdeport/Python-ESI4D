@@ -1,10 +1,17 @@
 {% extends "base.html" %}
-{% block title %}Détails du livre{% endblock %}
+{% block title %}Détails du prêt{% endblock %}
 {% block content %}
-  <h1>{{ book.title }}</h1>
-  <p>Auteur : {{ book.author }}</p>
-  <p>ISBN : {{ book.isbn }}</p>
-  <p>Prix : {{ book.price }}</p>
-  <p>Date de publication : {{ book.published_date }}</p><br>
-  <a href="{% url 'index_book' %}">Retour à la liste des livres</a> 
+  <h1>Détails du prêt</h1>
+  <p><strong>Livre :</strong> {{ loan.book.title }}</p>
+  <p><strong>Emprunteur :</strong> {{ loan.name_borrower }}</p>
+  <p><strong>Mail de l'emprunteur :</strong> {{ loan.mail_borrower }}</p>
+  <p><strong>Date d'emprunt :</strong> {{ loan.date_loan }}</p>
+  <p><strong>Date de retour prévue :</strong> {{ loan.date_limit_return }}</p>
+  {% if loan.date_returned %}
+    <p><strong>Date de retour :</strong> {{ loan.date_returned }}</p>
+  {% else %}
+    <p><em>Le livre n'a pas encore été retourné.</em></p>
+  {% endif %}
+  <p><strong>Commentaires :</strong> {{ loan.comments }}</p>
+  <a class="btn btn-secondary" href="{% url 'index_loans' %}">Retour à la liste des prêts</a>
 {% endblock %}

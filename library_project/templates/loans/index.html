@@ -1,14 +1,61 @@
 {% extends "base.html" %}
 {% block title %}Liste des prêts{% endblock %}
+
 {% block content %}
-  <h1>Liste des prêts</h1>
-  <a href="{% url 'new_loan' %}">Créer un prêt</a>
-  <a href="{% url 'return_loan' %}">Enregistrer un retour</a>
-  <ul>
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1 class="h3 mb-0">Liste des prêts</h1>
+  <div>
+    <a href="{% url 'new_loan' %}" class="btn btn-success me-2">Créer un prêt</a>
+    <a href="{% url 'return_loan' %}" class="btn btn-warning">Enregistrer un retour</a>
+  </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Emprunteur</th>
+      <th>Livre</th>
+      <th>Prêt</th>
+      <th>Limite</th>
+      <th>Retour</th>
+      <th>Statut</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
     {% for loan in loans %}
-      <li>{{ loan.book.title }} — emprunteur: {{ loan.name_borrower }} — prêt le: {{ loan.date_loan }} — statut: {{ loan.state_book_returned }}</li>
+      <tr>
+        <td>{{ loan.name_borrower }}<br><small class="text-muted">{{ loan.mail_borrower }}</small></td>
+        <td>
+          {% if loan.book %}
+            <a href="{% url 'show_book' loan.book.id %}">{{ loan.book.title }}</a>
+          {% else %}
+            —
+          {% endif %}
+        </td>
+        <td>{{ loan.date_loan|date:"d/m/Y H:i" }}</td>
+        <td>{% if loan.date_limit_return %}{{ loan.date_limit_return|date:"d/m/Y" }}{% else %}—{% endif %}</td>
+        <td>{% if loan.date_returned %}{{ loan.date_returned|date:"d/m/Y H:i" }}{% else %}—{% endif %}</td>
+        <td>
+          {% if loan.state_book_returned == "returned" %}
+            <span class="badge bg-success">retourné</span>
+          {% elif loan.state_book_returned == "loan" %}
+            <span class="badge bg-warning text-dark">en prêt</span>
+          {% else %}
+            <span class="badge bg-secondary">{{ loan.state_book_returned|default:"—" }}</span>
+          {% endif %}
+        </td>
+        <td class="text-end">
+          <a href="{% url 'show_loan' loan.id %}" class="btn btn-sm btn-outline-primary">Voir</a>
+        </td>
+      </tr>
     {% empty %}
-      <li>Aucun prêt.</li>
+      <tr>
+        <td colspan="7">
+          <div class="alert alert-info mb-0">Aucun prêt.</div>
+        </td>
+      </tr>
     {% endfor %}
-  </ul>
+  </tbody>
+</table>
 {% endblock %}
