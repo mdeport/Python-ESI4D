@@ -9,7 +9,7 @@
 
   {% for author in authors %}
     <article>
-      <h2>{{ author.name }}</h2>
+      <h2>{{ author.first_name }} {{ author.last_name }}</h2>
       <p>{{ author.birth_date }}</p>
       <p>{{ author.nationality }}</p>
       <a href="{% url 'show_author' author.id %}">Voir l'auteur</a>

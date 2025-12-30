@@ -5,7 +5,7 @@
     <title>Voici l'auteur</title>
 </head>
 <body>
-  <h1>{{ author.name }}</h1>
+  <h1>{{ author.first_name }} {{ author.last_name }}</h1>
   <p>Date de naissance : {{ author.birth_date }}</p>
   <p>Nationalité : {{ author.nationality }}</p>
   <a href="{% url 'index_author' %}">Retour à la liste des auteurs</a>
