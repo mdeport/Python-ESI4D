@@ -23,3 +23,14 @@ def new_book(request):
 def show_book(request: HttpResponse, book_id: int) -> HttpResponse:
     book = get_object_or_404(Book,id=book_id)
     return render(request, "books/show.html", {"book": book})
+
+def edit_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    if request.method == "POST":
+        form = BookForm(request.POST, instance=book)
+        if form.is_valid():
+            form.save()
+            return redirect("show_book", book_id=book.id)
+    else:
+        form = BookForm(instance=book)
+    return render(request, "books/edit.html", {"form": form, "book": book})

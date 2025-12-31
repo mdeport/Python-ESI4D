@@ -34,7 +34,6 @@ class BookForm(forms.ModelForm):
         }
 
     def clean(self):
-        breakpoint()
         cleaned = super().clean()
         avail = cleaned.get("number_of_books_available")
         poss = cleaned.get("number_of_book_possessed")
