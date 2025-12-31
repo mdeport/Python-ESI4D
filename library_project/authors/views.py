@@ -21,3 +21,14 @@ def new_author(request):
 def show_author(request, author_id):
     author = get_object_or_404(Author, id=author_id)
     return render(request, "authors/show.html", {"author": author})
+
+def edit_author(request, author_id):
+    author = get_object_or_404(Author, id=author_id)
+    if request.method == "POST":
+        form = AuthorForm(request.POST, instance=author)
+        if form.is_valid():
+            form.save()
+            return redirect("show_author", author_id=author.id)
+    else:
+        form = AuthorForm(instance=author)
+    return render(request, "authors/edit.html", {"form": form, "author": author})

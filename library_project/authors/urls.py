@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.index_author, name='index_author'),
     path('new/', views.new_author, name='new_author'),
     path('<int:author_id>/', views.show_author, name='show_author'),
+    path('<int:author_id>/edit/', views.edit_author, name='edit_author'),
 ]

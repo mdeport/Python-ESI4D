@@ -18,6 +18,7 @@
           <p class="card-text mb-3"><strong>Biography :</strong> {{ author.biography }}</p>
           <p class="card-text mb-3"><strong>...</strong></p>
           <a href="{% url 'show_author' author.id %}" class="btn btn-primary btn-sm">Voir</a>
+          <a href="{% url 'edit_author' author.id %}" class="btn btn-secondary btn-sm">Éditer</a>
         </div>
       </div>
     </div>
