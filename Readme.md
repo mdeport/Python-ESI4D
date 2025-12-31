@@ -1,29 +1,38 @@
-## Commande Créer le projet
+## Commande 
 
+Créer un projet Django
 ```bash
 django-admin startproject library_project
 ```
-
-## Commande Créer une application
-
+Commande pour activer l'environnement 
 ```bash
-python3 manage.py startapp books    
+source venv/bin/activate
 ```
-
-## Commande Générer les migrations
-
+commande pour le desactiver
+```bash
+deactivate
+```
+Commande Générer les migrations
 ```bash
 python3 manage.py makemigrations
 ```
-
-## Commande Appliquer les migrations d'une application spécifique
-
+Commande pour lancer les migrations
 ```bash
 python3 manage.py migrate 
 ```
-
-## lancer le server de développement :
-
+Commande Créer une application
+```bash
+python3 manage.py startapp books    
+```
+lancer le serveur en local
 ```bash
 python3 manage.py runserver
 ```
+
+Langage : 
+- Python avec le framework Django
+- Framework CSS : Bootstrap
+- Base de données : SQLite
+
+Fonctionnement de l'application :
+
