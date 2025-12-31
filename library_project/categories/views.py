@@ -19,3 +19,14 @@ def new_category(request):
 def show_category(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     return render(request, "categories/show.html", {"category": category})
+
+def edit_category(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    if request.method == "POST":
+        form = CategoryForm(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+            return redirect("show_category", category_id=category.id)
+    else:
+        form = CategoryForm(instance=category)
+    return render(request, "categories/edit.html", {"form": form, "category": category})
